@@ -1,0 +1,12 @@
+# Macが自動生成する隠しファイル
+.DS_Store
+
+# 環境変数・機密情報
+.env
+
+# Pythonが自動生成するキャッシュ
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
