@@ -1,14 +1,19 @@
-from pathlib import Path
 from google.cloud import bigquery
+import argparse
+
+# argparseにより、外部からファイルを指定して受け取れるようにする
+parser = argparse.ArgumentParser()
+parser.add_argument("--sql", type=str, required=True)
+args = parser.parse_args()
 
 # Pathの設定を行い、どのOSでも問題なくファイルを読み込めるように設定
-pipe_sql_file = Path('./pipeline/sql/make_prep_data.sql')
+#pipe_sql_file = Path('./pipeline/sql/make_prep_data.sql')
 
 # clientの設定
 client = bigquery.Client() 
 
 # sqlファイルの読み込み
-with open(pipe_sql_file) as file:
+with open(args.sql) as file:
     sql_query = file.read()
 
 # クエリの実行
