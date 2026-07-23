@@ -37,9 +37,7 @@ WITH int_cast AS (
     type, 
     price_info_class, 
     municipality_code, 
-    prefecture, 
-    municipality, 
-    district, 
+    SUBSTRING(municipality, 4) AS municipality, 
     nearest_station, 
     layout, 
     structure, 
@@ -48,7 +46,24 @@ WITH int_cast AS (
     city_planning, 
     renovation, 
     transaction_notes
-  FROM `raw_zone.osaka_pref`
+  FROM (
+    SELECT 
+    id, 
+    type, 
+    price_info_class, 
+    municipality_code, 
+    municipality, 
+    nearest_station, 
+    layout, 
+    structure, 
+    use, 
+    future_use, 
+    city_planning, 
+    renovation, 
+    transaction_notes
+    FROM `raw_zone.osaka_pref`
+    WHERE municipality LIKE "大阪市%"
+  )
 )
 SELECT *
 FROM others
