@@ -1,0 +1,883 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20262.26.0603.1643                               -->
+<workbook original-version='18.1' source-build='2026.2.0 (20262.26.0603.1643)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='median_preds_by_year' inline='true' name='federated.0d0q3bx1p832yg1h4742t1r5kzqo' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='median_preds_by_year' name='textscan.1dje36q01v06i2192ccdb0o7r4z5'>
+            <connection class='textscan' directory='/Users/shoki_u/ml-training/objective/mlit_property_price_prediction/data/processed' filename='median_preds_by_year.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.1dje36q01v06i2192ccdb0o7r4z5' name='median_preds_by_year.csv' table='[median_preds_by_year#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='ja_JP' separator=','>
+            <column datatype='string' name='municipality' ordinal='0' />
+            <column datatype='real' name='rate_of_increase' ordinal='1' />
+            <column datatype='integer' name='year' ordinal='2' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[median_preds_by_year.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;ja&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;￥&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;ja_JP&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>municipality</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[municipality]</local-name>
+            <parent-name>[median_preds_by_year.csv]</parent-name>
+            <remote-alias>municipality</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[median_preds_by_year.csv_73E94BDAFAF84D8B80139F138F3FA493]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rate_of_increase</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[rate_of_increase]</local-name>
+            <parent-name>[median_preds_by_year.csv]</parent-name>
+            <remote-alias>rate_of_increase</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[median_preds_by_year.csv_73E94BDAFAF84D8B80139F138F3FA493]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[year]</local-name>
+            <parent-name>[median_preds_by_year.csv]</parent-name>
+            <remote-alias>year</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[median_preds_by_year.csv_73E94BDAFAF84D8B80139F138F3FA493]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='区分' datatype='string' name='[Calculation_0513979126427648]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [municipality] = &quot;此花区&quot; THEN &quot;此花区(開催地)&quot;&#10;ELSEIF [municipality] = &quot;北区&quot; OR [municipality] = &quot;中央区&quot; THEN &quot;中心地&quot;&#10;ELSE &quot;その他&quot;&#10;END' />
+      </column>
+      <column caption='median_preds_by_year.csv' datatype='table' name='[__tableau_internal_object_id__].[median_preds_by_year.csv_73E94BDAFAF84D8B80139F138F3FA493]' role='measure' type='quantitative' />
+      <column caption='Municipality' datatype='string' name='[municipality]' role='dimension' type='nominal' />
+      <column caption='Rate Of Increase' datatype='real' name='[rate_of_increase]' role='measure' type='quantitative' />
+      <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
+      <column-instance column='[Calculation_0513979126427648]' derivation='None' name='[none:Calculation_0513979126427648:nk]' pivot='key' type='nominal' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='ja_JP' class='hyper' dbname='/var/folders/gp/vr2gz4c54kd1jns8jxndblgc0000gn/T/tableau-temp/#TableauTemp_0xjts190xi5eaf1bq6jmq05j120v.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='07/23/2026 02:11:45 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>municipality</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[municipality]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>municipality</remote-alias>
+              <ordinal>0</ordinal>
+              <family>median_preds_by_year.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>24</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LJA' />
+              <object-id>[median_preds_by_year.csv_73E94BDAFAF84D8B80139F138F3FA493]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>rate_of_increase</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[rate_of_increase]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>rate_of_increase</remote-alias>
+              <ordinal>1</ordinal>
+              <family>median_preds_by_year.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>116</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[median_preds_by_year.csv_73E94BDAFAF84D8B80139F138F3FA493]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>year</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[year]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>year</remote-alias>
+              <ordinal>2</ordinal>
+              <family>median_preds_by_year.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[median_preds_by_year.csv_73E94BDAFAF84D8B80139F138F3FA493]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Calculation_0513979126427648:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;中心地&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;その他&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;此花区(開催地)&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;日本&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='median_preds_by_year.csv' id='median_preds_by_year.csv_73E94BDAFAF84D8B80139F138F3FA493'>
+            <properties context=''>
+              <relation connection='textscan.1dje36q01v06i2192ccdb0o7r4z5' name='median_preds_by_year.csv' table='[median_preds_by_year#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='ja_JP' separator=','>
+                  <column datatype='string' name='municipality' ordinal='0' />
+                  <column datatype='real' name='rate_of_increase' ordinal='1' />
+                  <column datatype='integer' name='year' ordinal='2' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='trend_compare_konohana_tsurumi_osakacity.csv (複数の接続)' inline='true' name='federated.1pm2fd21qc9w0q11wc7zq112gla9' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='expo_event_dates' name='textscan.157us9c1k6aphm1cc0hi41fevnm0'>
+            <connection class='textscan' directory='/Users/shoki_u/ml-training/objective/mlit_property_price_prediction/data/processed' filename='expo_event_dates.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='trend_compare_konohana_tsurumi_osakacity' name='textscan.11vuxyx0heeuqq1dxflky1xczcdn'>
+            <connection class='textscan' directory='/Users/shoki_u/ml-training/objective/mlit_property_price_prediction/data/processed' filename='trend_compare_konohana_tsurumi_osakacity.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.11vuxyx0heeuqq1dxflky1xczcdn' name='trend_compare_konohana_tsurumi_osakacity.csv' table='[trend_compare_konohana_tsurumi_osakacity#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='ja_JP' separator=','>
+            <column datatype='date' name='date' ordinal='0' />
+            <column datatype='real' name='price_per_sqm' ordinal='1' />
+            <column datatype='string' name='group' ordinal='2' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[trend_compare_konohana_tsurumi_osakacity.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;ja&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;￥&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;ja_JP&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[date]</local-name>
+            <parent-name>[trend_compare_konohana_tsurumi_osakacity.csv]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[trend_compare_konohana_tsurumi_osakacity.csv_4B6724184D704129AB2B82BD4336ADDA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>price_per_sqm</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[price_per_sqm]</local-name>
+            <parent-name>[trend_compare_konohana_tsurumi_osakacity.csv]</parent-name>
+            <remote-alias>price_per_sqm</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[trend_compare_konohana_tsurumi_osakacity.csv_4B6724184D704129AB2B82BD4336ADDA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>group</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[group]</local-name>
+            <parent-name>[trend_compare_konohana_tsurumi_osakacity.csv]</parent-name>
+            <remote-alias>group</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[trend_compare_konohana_tsurumi_osakacity.csv_4B6724184D704129AB2B82BD4336ADDA]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='trend_compare_konohana_tsurumi_osakacity.csv' datatype='table' name='[__tableau_internal_object_id__].[trend_compare_konohana_tsurumi_osakacity.csv_4B6724184D704129AB2B82BD4336ADDA]' role='measure' type='quantitative' />
+      <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+      <column caption='Group' datatype='string' name='[group]' role='dimension' type='nominal' />
+      <column caption='Price Per Sqm' datatype='real' name='[price_per_sqm]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='ja_JP' class='hyper' dbname='/var/folders/gp/vr2gz4c54kd1jns8jxndblgc0000gn/T/tableau-temp/#TableauTemp_1w8pc590nsmelp13jbewv1sjjyqi.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='07/23/2026 02:31:43 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>date</remote-alias>
+              <ordinal>0</ordinal>
+              <family>trend_compare_konohana_tsurumi_osakacity.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>48</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[trend_compare_konohana_tsurumi_osakacity.csv_4B6724184D704129AB2B82BD4336ADDA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>price_per_sqm</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[price_per_sqm]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>price_per_sqm</remote-alias>
+              <ordinal>1</ordinal>
+              <family>trend_compare_konohana_tsurumi_osakacity.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>144</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[trend_compare_konohana_tsurumi_osakacity.csv_4B6724184D704129AB2B82BD4336ADDA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>group</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[group]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>group</remote-alias>
+              <ordinal>2</ordinal>
+              <family>trend_compare_konohana_tsurumi_osakacity.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LJA' />
+              <object-id>[trend_compare_konohana_tsurumi_osakacity.csv_4B6724184D704129AB2B82BD4336ADDA]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;日本&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='trend_compare_konohana_tsurumi_osakacity.csv' id='trend_compare_konohana_tsurumi_osakacity.csv_4B6724184D704129AB2B82BD4336ADDA'>
+            <properties context=''>
+              <relation connection='textscan.11vuxyx0heeuqq1dxflky1xczcdn' name='trend_compare_konohana_tsurumi_osakacity.csv' table='[trend_compare_konohana_tsurumi_osakacity#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='ja_JP' separator=','>
+                  <column datatype='date' name='date' ordinal='0' />
+                  <column datatype='real' name='price_per_sqm' ordinal='1' />
+                  <column datatype='string' name='group' ordinal='2' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='konohana_segment_trend' inline='true' name='federated.0ba9g9z1keao181ecqhsn09gxbn9' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='konohana_segment_trend' name='textscan.1ek6dbu07grpjx1deracg18tf4o2'>
+            <connection class='textscan' directory='/Users/shoki_u/ml-training/objective/mlit_property_price_prediction/data/processed' filename='konohana_segment_trend.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.1ek6dbu07grpjx1deracg18tf4o2' name='konohana_segment_trend.csv' table='[konohana_segment_trend#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='ja_JP' separator=','>
+            <column datatype='string' name='attribute_value' ordinal='0' />
+            <column datatype='integer' name='year' ordinal='1' />
+            <column datatype='real' name='price_per_sqm' ordinal='2' />
+            <column datatype='string' name='attribute_type' ordinal='3' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[konohana_segment_trend.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;ja&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;￥&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;ja_JP&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>attribute_value</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[attribute_value]</local-name>
+            <parent-name>[konohana_segment_trend.csv]</parent-name>
+            <remote-alias>attribute_value</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[konohana_segment_trend.csv_94FD63E825974683AAF37FB6829EED61]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[year]</local-name>
+            <parent-name>[konohana_segment_trend.csv]</parent-name>
+            <remote-alias>year</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[konohana_segment_trend.csv_94FD63E825974683AAF37FB6829EED61]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>price_per_sqm</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[price_per_sqm]</local-name>
+            <parent-name>[konohana_segment_trend.csv]</parent-name>
+            <remote-alias>price_per_sqm</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[konohana_segment_trend.csv_94FD63E825974683AAF37FB6829EED61]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>attribute_type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[attribute_type]</local-name>
+            <parent-name>[konohana_segment_trend.csv]</parent-name>
+            <remote-alias>attribute_type</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LJA_RJP' />
+            <object-id>[konohana_segment_trend.csv_94FD63E825974683AAF37FB6829EED61]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='konohana_segment_trend.csv' datatype='table' name='[__tableau_internal_object_id__].[konohana_segment_trend.csv_94FD63E825974683AAF37FB6829EED61]' role='measure' type='quantitative' />
+      <column caption='Attribute Type' datatype='string' name='[attribute_type]' role='dimension' type='nominal' />
+      <column caption='Attribute Value' datatype='string' name='[attribute_value]' role='dimension' type='nominal' />
+      <column caption='Price Per Sqm' datatype='real' name='[price_per_sqm]' role='measure' type='quantitative' />
+      <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
+      <column-instance column='[attribute_value]' derivation='None' name='[none:attribute_value:nk]' pivot='key' type='nominal' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='ja_JP' class='hyper' dbname='/var/folders/gp/vr2gz4c54kd1jns8jxndblgc0000gn/T/tableau-temp/#TableauTemp_0v534zu1idvmco1d7hwrm00k5fzh.hyper' default-settings='yes' schema='Extract' sslmode='' update-time='07/23/2026 02:28:09 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='konohana_segment_trend' increment-value='%null%' refresh-type='create' rows-inserted='117' timestamp-start='2026-07-23 02:28:09.315' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>attribute_value</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[attribute_value]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>attribute_value</remote-alias>
+              <ordinal>0</ordinal>
+              <family>konohana_segment_trend.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LJA' />
+              <object-id>[konohana_segment_trend.csv_94FD63E825974683AAF37FB6829EED61]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>year</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[year]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>year</remote-alias>
+              <ordinal>1</ordinal>
+              <family>konohana_segment_trend.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[konohana_segment_trend.csv_94FD63E825974683AAF37FB6829EED61]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>price_per_sqm</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[price_per_sqm]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>price_per_sqm</remote-alias>
+              <ordinal>2</ordinal>
+              <family>konohana_segment_trend.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>99</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[konohana_segment_trend.csv_94FD63E825974683AAF37FB6829EED61]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>attribute_type</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[attribute_type]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>attribute_type</remote-alias>
+              <ordinal>3</ordinal>
+              <family>konohana_segment_trend.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LJA' />
+              <object-id>[konohana_segment_trend.csv_94FD63E825974683AAF37FB6829EED61]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:attribute_value:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;３ＬＤＫ&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;１ＤＫ&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;２ＤＫ＋Ｓ&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;駅徒歩10分以内（駅チカ）&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;４ＤＫ&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;２ＬＤＫ&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;１Ｋ&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;未リノベ・不明&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;２ＬＤＫ＋Ｓ&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;駅徒歩11分以上（駅トオ）&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;築古&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;４ＬＤＫ&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;３ＤＫ&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;１ＬＤＫ&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;築浅&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;リノベ済み&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;２ＤＫ&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;日本&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='konohana_segment_trend.csv' id='konohana_segment_trend.csv_94FD63E825974683AAF37FB6829EED61'>
+            <properties context=''>
+              <relation connection='textscan.1ek6dbu07grpjx1deracg18tf4o2' name='konohana_segment_trend.csv' table='[konohana_segment_trend#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='ja_JP' separator=','>
+                  <column datatype='string' name='attribute_value' ordinal='0' />
+                  <column datatype='integer' name='year' ordinal='1' />
+                  <column datatype='real' name='price_per_sqm' ordinal='2' />
+                  <column datatype='string' name='attribute_type' ordinal='3' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='区別ランキング(2030年)'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='median_preds_by_year' name='federated.0d0q3bx1p832yg1h4742t1r5kzqo' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0d0q3bx1p832yg1h4742t1r5kzqo'>
+            <column caption='区分' datatype='string' name='[Calculation_0513979126427648]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [municipality] = &quot;此花区&quot; THEN &quot;此花区(開催地)&quot;&#10;ELSEIF [municipality] = &quot;北区&quot; OR [municipality] = &quot;中央区&quot; THEN &quot;中心地&quot;&#10;ELSE &quot;その他&quot;&#10;END' />
+            </column>
+            <column caption='Municipality' datatype='string' name='[municipality]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_0513979126427648]' derivation='None' name='[none:Calculation_0513979126427648:nk]' pivot='key' type='nominal' />
+            <column-instance column='[municipality]' derivation='None' name='[none:municipality:nk]' pivot='key' type='nominal' />
+            <column-instance column='[year]' derivation='None' name='[none:year:qk]' pivot='key' type='quantitative' />
+            <column caption='Rate Of Increase' datatype='real' name='[rate_of_increase]' role='measure' type='quantitative' />
+            <column-instance column='[rate_of_increase]' derivation='Sum' name='[sum:rate_of_increase:qk]' pivot='key' type='quantitative' />
+            <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0d0q3bx1p832yg1h4742t1r5kzqo].[none:year:qk]' included-values='in-range'>
+            <min>2030</min>
+            <max>2030</max>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0d0q3bx1p832yg1h4742t1r5kzqo].[none:municipality:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0d0q3bx1p832yg1h4742t1r5kzqo].[sum:rate_of_increase:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0d0q3bx1p832yg1h4742t1r5kzqo].[none:year:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0d0q3bx1p832yg1h4742t1r5kzqo].[none:Calculation_0513979126427648:nk]' />
+            </encodings>
+            <reference-line axis-column='[federated.0d0q3bx1p832yg1h4742t1r5kzqo].[sum:rate_of_increase:qk]' enable-instant-analytics='true' formula='constant' id='refline0' label-type='automatic' scope='per-table' value='100.0' value-column='[federated.0d0q3bx1p832yg1h4742t1r5kzqo].[sum:rate_of_increase:qk]' z-order='1' />
+          </pane>
+        </panes>
+        <rows>[federated.0d0q3bx1p832yg1h4742t1r5kzqo].[none:municipality:nk]</rows>
+        <cols>[federated.0d0q3bx1p832yg1h4742t1r5kzqo].[sum:rate_of_increase:qk]</cols>
+      </table>
+      <simple-id uuid='{F5B4F9D0-1540-4164-9354-8CF07F2F04AC}' />
+    </worksheet>
+    <worksheet name='此花区_属性別トレンド'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='konohana_segment_trend' name='federated.0ba9g9z1keao181ecqhsn09gxbn9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0ba9g9z1keao181ecqhsn09gxbn9'>
+            <column caption='Attribute Type' datatype='string' name='[attribute_type]' role='dimension' type='nominal' />
+            <column caption='Attribute Value' datatype='string' name='[attribute_value]' role='dimension' type='nominal' />
+            <column-instance column='[attribute_type]' derivation='None' name='[none:attribute_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[attribute_value]' derivation='None' name='[none:attribute_value:nk]' pivot='key' type='nominal' />
+            <column-instance column='[year]' derivation='None' name='[none:year:qk]' pivot='key' type='quantitative' />
+            <column caption='Price Per Sqm' datatype='real' name='[price_per_sqm]' role='measure' type='quantitative' />
+            <column-instance column='[price_per_sqm]' derivation='Sum' name='[sum:price_per_sqm:qk]' pivot='key' type='quantitative' />
+            <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0ba9g9z1keao181ecqhsn09gxbn9].[none:attribute_type:nk]'>
+            <groupfilter function='member' level='[none:attribute_type:nk]' member='&quot;リノベ有無&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0ba9g9z1keao181ecqhsn09gxbn9].[none:attribute_type:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.0ba9g9z1keao181ecqhsn09gxbn9].[none:attribute_value:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0ba9g9z1keao181ecqhsn09gxbn9].[sum:price_per_sqm:qk]</rows>
+        <cols>[federated.0ba9g9z1keao181ecqhsn09gxbn9].[none:year:qk]</cols>
+      </table>
+      <simple-id uuid='{43A948F8-354B-4B87-AE5D-651D62E3D2A2}' />
+    </worksheet>
+    <worksheet name='此花区鶴見区大阪市トレンド比較'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='trend_compare_konohana_tsurumi_osakacity.csv (複数の接続)' name='federated.1pm2fd21qc9w0q11wc7zq112gla9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1pm2fd21qc9w0q11wc7zq112gla9'>
+            <column-instance column='[price_per_sqm]' derivation='Avg' name='[avg:price_per_sqm:qk]' pivot='key' type='quantitative' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Group' datatype='string' name='[group]' role='dimension' type='nominal' />
+            <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[group]' derivation='None' name='[none:group:nk]' pivot='key' type='nominal' />
+            <column caption='Price Per Sqm' datatype='real' name='[price_per_sqm]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='fill-above' id='refline1' value='#00000000' />
+            <format attr='fill-below' id='refline1' value='#00000000' />
+            <format attr='fill-above' id='refline2' value='#00000000' />
+            <format attr='fill-below' id='refline2' value='#00000000' />
+            <format attr='fill-above' id='refline3' value='#00000000' />
+            <format attr='fill-below' id='refline3' value='#00000000' />
+            <format attr='fill-above' id='refline4' value='#00000000' />
+            <format attr='fill-below' id='refline4' value='#00000000' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1pm2fd21qc9w0q11wc7zq112gla9].[none:group:nk]' />
+            </encodings>
+            <reference-line axis-column='[federated.1pm2fd21qc9w0q11wc7zq112gla9].[none:date:qk]' enable-instant-analytics='true' formula='constant' id='refline1' label='①' label-type='custom' scope='per-table' value='#2015-07-28#' value-column='[federated.1pm2fd21qc9w0q11wc7zq112gla9].[none:date:qk]' z-order='2' />
+            <reference-line axis-column='[federated.1pm2fd21qc9w0q11wc7zq112gla9].[none:date:qk]' enable-instant-analytics='true' formula='constant' id='refline2' label='②' label-type='custom' scope='per-table' value='#2018-11-24#' value-column='[federated.1pm2fd21qc9w0q11wc7zq112gla9].[none:date:qk]' z-order='3' />
+            <reference-line axis-column='[federated.1pm2fd21qc9w0q11wc7zq112gla9].[none:date:qk]' enable-instant-analytics='true' formula='constant' id='refline3' label='③' label-type='custom' scope='per-table' value='#2023-04-13#' value-column='[federated.1pm2fd21qc9w0q11wc7zq112gla9].[none:date:qk]' z-order='4' />
+            <reference-line axis-column='[federated.1pm2fd21qc9w0q11wc7zq112gla9].[none:date:qk]' enable-instant-analytics='true' formula='constant' id='refline4' label='④' label-type='custom' scope='per-table' value='#2025-04-13#' value-column='[federated.1pm2fd21qc9w0q11wc7zq112gla9].[none:date:qk]' z-order='5' />
+          </pane>
+        </panes>
+        <rows>[federated.1pm2fd21qc9w0q11wc7zq112gla9].[avg:price_per_sqm:qk]</rows>
+        <cols>[federated.1pm2fd21qc9w0q11wc7zq112gla9].[none:date:qk]</cols>
+      </table>
+      <simple-id uuid='{E4C5777E-8985-4D49-AB44-1059F8476E33}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='ストーリー: 2025年から2030年間の価格上昇率予測と投資選定条件の裏付け' type='storyboard'>
+      <style />
+      <size maxheight='864' maxwidth='1016' minheight='864' minwidth='1016' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98340' id='1' param='vert' removable='false' type-v2='layout-flow' w='98426' x='787' y='830'>
+            <zone h='3423' id='3' type-v2='title' w='98426' x='787' y='830' />
+            <zone h='10477' id='4' is-fixed='true' paired-zone-id='5' removable='false' type-v2='flipboard-nav' w='98426' x='787' y='4253' />
+            <zone h='84440' id='5' paired-zone-id='4' removable='false' type-v2='flipboard' w='98426' x='787' y='14730'>
+              <flipboard active-id='2' nav-type='caption' show-nav-arrows='true'>
+                <story-points>
+                  <story-point caption='北区、中央区などの中心地、そして開催地である此花区で値上がりを予測' captured-sheet='区別ランキング(2030年)' id='1' />
+                  <story-point caption='裏付け: 此花区では、1K・駅近・築浅の物件が突出して値上がり' captured-sheet='此花区_属性別トレンド' id='2'>
+                    <currentDeltas>
+                      <worksheet name='此花区_属性別トレンド'>
+                        <filter class='categorical' column='[federated.0ba9g9z1keao181ecqhsn09gxbn9].[none:attribute_type:nk]'>
+                          <groupfilter function='member' level='[none:attribute_type:nk]' member='&quot;間取り&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+                        </filter>
+                        <style delta-type='added'>
+                          <style-rule element='axis'>
+                            <encoding attr='space' class='0' field='[federated.0ba9g9z1keao181ecqhsn09gxbn9].[sum:price_per_sqm:qk]' field-type='quantitative' scope='rows' type='space' />
+                            <encoding attr='space' class='0' field='[federated.0ba9g9z1keao181ecqhsn09gxbn9].[none:year:qk]' field-type='quantitative' scope='cols' type='space' />
+                          </style-rule>
+                        </style>
+                      </worksheet>
+                    </currentDeltas>
+                    <capturedDeltas>
+                      <worksheet name='此花区_属性別トレンド'>
+                        <filter class='categorical' column='[federated.0ba9g9z1keao181ecqhsn09gxbn9].[none:attribute_type:nk]'>
+                          <groupfilter function='member' level='[none:attribute_type:nk]' member='&quot;間取り&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+                        </filter>
+                      </worksheet>
+                    </capturedDeltas>
+                  </story-point>
+                  <story-point caption='①候補地発表〜③着工までは此花区・鶴見区に差はなく、④開催前後で初めて此花区が上回り始めた' captured-sheet='此花区鶴見区大阪市トレンド比較' id='3' />
+                </story-points>
+              </flipboard>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{73DCE5FD-08E3-4460-B671-9D427FCF666C}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='72'>
+    <window class='worksheet' name='区別ランキング(2030年)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0d0q3bx1p832yg1h4742t1r5kzqo].[none:Calculation_0513979126427648:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{DFCE0AF8-3782-475F-A5A2-D785DB9EDD0C}' />
+    </window>
+    <window class='worksheet' name='此花区_属性別トレンド'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0ba9g9z1keao181ecqhsn09gxbn9].[none:attribute_type:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.0ba9g9z1keao181ecqhsn09gxbn9].[none:attribute_value:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{02BEF806-10A6-4D1B-9D95-6151C65EFE6B}' />
+    </window>
+    <window class='worksheet' name='此花区鶴見区大阪市トレンド比較'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1pm2fd21qc9w0q11wc7zq112gla9].[none:group:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{E6F8A5D9-55C6-425D-8914-90A5366194DD}' />
+    </window>
+    <window class='dashboard' maximized='true' name='ストーリー: 2025年から2030年間の価格上昇率予測と投資選定条件の裏付け'>
+      <viewpoints />
+      <active id='4' />
+      <simple-id uuid='{D4529E4F-6897-4032-BBCE-C8387F0EAE9F}' />
+    </window>
+  </windows>
+</workbook>
